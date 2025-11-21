@@ -51,6 +51,8 @@ htmlcov/
 # Output files
 output.json
 *.log
+legacy_output.txt
+refactored_output.txt
 
 # OS
 Thumbs.db

@@ -8,6 +8,25 @@ Refactorer le code legacy (`legacy/order_report_legacy.py`) tout en garantissant
 
 ✅ **Status : TERMINÉ - Golden Master PASSE**
 
+## ⚡ Quick Start
+
+```bash
+# 1. Cloner le projet
+git clone https://github.com/FCHEHIDI/Refactoring_Test.git
+cd Refactoring_Test
+
+# 2. Installer les dépendances
+pip install -r requirements-dev.txt
+
+# 3. Lancer les tests
+pytest
+
+# 4. Exécuter le code refactoré
+python src/main.py
+```
+
+**Résultat attendu** : ✅ 38 tests passent, dont le golden master (sortie identique au legacy)
+
 ## 📊 Architecture
 
 ### Vue d'ensemble
@@ -129,6 +148,28 @@ python src/main.py
 
 ```bash
 python legacy/order_report_legacy.py
+```
+
+### Comparer les sorties (validation manuelle)
+
+```bash
+# Générer les deux sorties
+python legacy/order_report_legacy.py > legacy_output.txt
+python src/main.py > refactored_output.txt
+
+# Comparer (PowerShell - pas de sortie = identiques)
+Compare-Object (Get-Content legacy_output.txt) (Get-Content refactored_output.txt)
+
+# Comparer (CMD Windows)
+fc legacy_output.txt refactored_output.txt
+
+# Comparer (Linux/Mac)
+diff legacy_output.txt refactored_output.txt
+```
+
+**Ou simplement lancer le test golden master qui fait la comparaison automatiquement** :
+```bash
+python tests/test_golden_master.py
 ```
 
 ## 🧪 Tests
